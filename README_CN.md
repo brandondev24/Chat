@@ -1,7 +1,7 @@
 ---
 license: cc-by-nc-4.0
 language:
-- cn
+- en
 tags:
 - multimodal
 - vision-language

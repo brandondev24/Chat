@@ -19,9 +19,8 @@ pipeline_tag: image-to-text
 inference: false
 ---
 
-<!-- Copyright 2026 SenseTime Group Inc. and/or its affiliates. -->
 
-# SenseNova-Vision: Rethinking Computer Vision as Unified Multimodal Generation**
+# SenseNova-Vision: Rethinking Computer Vision as Unified Multimodal Generation
 
 <p align="center">
   <strong>English</strong> | <a href="https://huggingface.co/sensenova/SenseNova-Vision-7B-MoT/blob/main/README_CN.md">简体中文</a>

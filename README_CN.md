@@ -1,4 +1,4 @@
-# 将计算机视觉重构为统一多模态生成
+# 迈向统一多模态生成的视觉新范式
 
 <p align="center">
   <a href="https://huggingface.co/sensenova/SenseNova-Vision-7B-MoT">English</a> | <strong>简体中文</strong>

@@ -1,24 +1,3 @@
----
-license: cc-by-nc-4.0
-language:
-- en
-tags:
-- multimodal
-- vision-language
-- unified-multimodal-generation
-- computer-vision
-- object-detection
-- segmentation
-- depth-estimation
-- surface-normal-estimation
-- 3d-reconstruction
-- camera-pose-estimation
-- ocr
-- gui-grounding
-pipeline_tag: image-to-text
-inference: false
----
-
 # SenseNova-Vision：将计算机视觉重构为统一多模态生成
 
 <p align="center">

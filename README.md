@@ -19,8 +19,6 @@ pipeline_tag: image-to-text
 inference: false
 ---
 
-<!-- Copyright 2026 SenseTime Group Inc. and/or its affiliates. -->
-
 # SenseNova-Vision: Rethinking Computer Vision as Unified Multimodal Generation
 
 <p align="center">
@@ -44,11 +42,11 @@ inference: false
   <img src="./assets/fig2_system_overview.webp" alt="SenseNova-Vision system overview" width="900">
 </p>
 
-## Overview
+## 🌟 Overview
 SenseNova-Vision is a unified multimodal model for computer vision. It reformulates heterogeneous visual perception tasks as **text generation**, **image generation**, or **mixed text-image generation**, instead of relying on task-specific heads, decoders, or loss functions for each individual task. The model supports structured visual understanding, dense geometric prediction, segmentation, and multi-view visual geometry within a shared instruction-following interface.
 
 
-## Model Description
+## 🚀 Model Description
 SenseNova-Vision rethinks computer vision as **unified multimodal generation**. Traditional computer-vision systems usually attach task-specific prediction heads for detection, segmentation, depth, surface normal, or 3D geometry. SenseNova-Vision instead expresses these heterogeneous tasks through the native input-output spaces of a unified multimodal model.
 
 Natural-language instructions and optional visual prompts specify the target task, regions, views, output schema, and decoding convention. The model then generates different target formats depending on the task:
@@ -61,7 +59,7 @@ Natural-language instructions and optional visual prompts specify the target tas
 
 This formulation allows a single model to cover structured visual understanding, dense geometric prediction, segmentation, and multi-view visual geometry while keeping outputs decodable for standard benchmarks.
 
-## Key Features
+## 🌐 Key Features
 
 - **Unified vision-task formulation:** Heterogeneous computer-vision tasks are cast into the native text, image, and mixed generation spaces of a unified multimodal model.
 - **No task-specific heads:** The model does not rely on separate detection, segmentation, depth, normal, or geometry heads.
@@ -70,7 +68,7 @@ This formulation allows a single model to cover structured visual understanding,
 - **Instruction-defined task variants:** Natural-language instructions enable flexible task definitions beyond fixed benchmark schemas.
 
 
-## How to Use
+## 🛠️ How to Use
 
 The model requires the SenseNova-Vision inference code and task-specific post-processing scripts. The examples below assume that you have installed the project code and downloaded this model repository from Hugging Face.
 
@@ -409,13 +407,14 @@ SenseNova-Vision largely maintains general multimodal capability while being ada
   </tbody>
 </table>
 
-## Qualitative Examples
+
+## 🖼️ Qualitative Examples
 
 <p align="center">
   <img src="./assets/fig4_sensenova_vision_results.webp" alt="SenseNova-Vision qualitative results across vision tasks" width="900">
 </p>
 
-## Training Data
+## 📚 Training Data
 
 SenseNova-Vision is trained on the **SenseNova-Vision-Corpus-50M**, a large-scale computer-vision instruction-response corpus. The corpus converts heterogeneous annotations into a shared schema with visual inputs, natural-language instructions, and decodable targets represented as text, image, or mixed text-image responses.
 
@@ -430,7 +429,7 @@ The corpus covers four task families:
 
 Public annotations are converted directly when possible. Generated or curated targets are used to supplement incomplete supervision and improve diversity. A dedicated data document should provide the source lists, prompt templates, conversion rules, and corpus construction details.
 
-## Limitations
+## ⚠️ Limitations
 
 - **Not a specialist model for every task:** Although SenseNova-Vision covers many tasks, task-specific models may still outperform it on certain specialized benchmarks.
 - **Output parsing is task-dependent:** Textual outputs require task-specific parsers, and image outputs require decoding rules consistent with the training protocol.
@@ -438,11 +437,11 @@ Public annotations are converted directly when possible. Generated or curated ta
 - **Prompt sensitivity:** As an instruction-following model, performance can vary with prompt wording, output schema, and visual prompt style.
 - **Dataset and benchmark bias:** Model behavior reflects the distribution and annotation conventions of the training corpus.
 
-## Ethical Considerations
+## 🛡️ Ethical Considerations
 
 SenseNova-Vision may generate incorrect localization, segmentation, depth, normal, or camera predictions. Users should avoid deploying the model in safety-critical settings without independent verification. When used for datasets involving people, faces, documents, medical scenes, surveillance imagery, or private environments, users are responsible for complying with applicable privacy, consent, and data-governance requirements.
 
-## Citation
+## ✒️ Citation
 
 If you find SenseNova-Vision useful, please cite the technical report:
 
@@ -455,10 +454,10 @@ If you find SenseNova-Vision useful, please cite the technical report:
 }
 ```
 
-## License
+## 📜 License
 
 License information for the SenseNova-Vision pre-release will be updated before the public release. Please also follow the licenses of the underlying models, datasets, and third-party evaluation tools used by this model.
 
-## Contact
+## 📮 Contact
 
 For questions, issues, or collaboration requests, please use the official project repository or contact the authors through the release page once available.

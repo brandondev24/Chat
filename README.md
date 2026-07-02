@@ -21,9 +21,7 @@ inference: false
 
 <!-- Copyright 2026 SenseTime Group Inc. and/or its affiliates. -->
 
-# SenseNova-Vision-7B-MoT
-
-**SenseNova-Vision: Rethinking Computer Vision as Unified Multimodal Generation**
+# SenseNova-Vision: Rethinking Computer Vision as Unified Multimodal Generation**
 
 <p align="center">
   <strong>English</strong> | <a href="https://huggingface.co/sensenova/SenseNova-Vision-7B-MoT/blob/main/README_CN.md">简体中文</a>
@@ -31,7 +29,7 @@ inference: false
 
 <p align="center">
   <a href="https://github.com/OpenSenseNova/SenseNova-Vision"><img alt="GitHub Stars" src="https://img.shields.io/github/stars/OpenSenseNova/SenseNova-Vision?style=social"></a>
-  <a href="https://arxiv.org/abs/2511.18333"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2511.18333-b31b1b.svg"></a>
+  <a href="https://arxiv.org/abs/2607.18333"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2607.18333-b31b1b.svg"></a>
   <a href="https://huggingface.co/sensenova/SenseNova-Vision-7B-MoT"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20Hugging%20Face&message=Model&color=green"></a>
   <a href="https://huggingface.co/datasets/sensenova/SenseNova-Vision-Corpus-50M"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20Hugging%20Face&message=Dataset&color=yellow"></a>
 

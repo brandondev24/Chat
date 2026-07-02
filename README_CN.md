@@ -1,7 +1,7 @@
 ---
 license: cc-by-nc-4.0
 language:
-- en
+- cn
 tags:
 - multimodal
 - vision-language
@@ -21,9 +21,7 @@ inference: false
 
 <!-- Copyright 2026 SenseTime Group Inc. and/or its affiliates. -->
 
-# SenseNova-Vision-7B-MoT
-
-**SenseNova-Vision: Rethinking Computer Vision as Unified Multimodal Generation**
+# SenseNova-Vision: Rethinking Computer Vision as Unified Multimodal Generation**
 
 <p align="center">
   <strong>English</strong> | <a href="https://huggingface.co/sensenova/SenseNova-Vision-7B-MoT/blob/main/README_CN.md">简体中文</a>

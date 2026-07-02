@@ -19,7 +19,7 @@ pipeline_tag: image-to-text
 inference: false
 ---
 
-# SenseNova-Vision: Rethinking Computer Vision as Unified Multimodal Generation
+# Vision as Unified Multimodal Generation
 
 <p align="center">
   <strong>English</strong> | <a href="https://huggingface.co/sensenova/SenseNova-Vision-7B-MoT/blob/main/README_CN.md">简体中文</a>

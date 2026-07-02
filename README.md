@@ -79,66 +79,335 @@ The model requires the SenseNova-Vision inference code and task-specific post-pr
 ```python
 from huggingface_hub import snapshot_download
 
-model_path = snapshot_download("sensenovaSenseNova-Vision-7B-MoT")
+model_path = snapshot_download("sensenova/SenseNova-Vision-7B-MoT")
 print(model_path)
 ```
 
-## Benchmark Results
+### 🏗️ Key Contributions
 
-SenseNova-Vision is evaluated across structured visual understanding, dense geometric prediction, segmentation, multi-view visual geometry, and general multimodal capability. All tasks are formulated with natural-language instructions.
+- 🔗 We introduce a unified multimodal generation formulation that casts heterogeneous computer vision tasks into the native input-output spaces of UMMs.
+- 🧩 We construct the SenseNova-Vision Corpus, a large-scale computer-vision instruction-response corpus with decodable text, image, and mixed text-image targets.
+- ✨ We train SenseNova-Vision and show strong results across structured visual understanding, dense geometric prediction, segmentation, and multi-view visual geometry, while supporting language-defined task variants beyond fixed benchmark schemas.
+
+## 🏆 Benchmark Results
+
+SenseNova-Vision is evaluated across structured visual understanding, dense geometric prediction, segmentation, and multi-view visual geometry. All tasks are formulated with natural-language instructions: textual outputs are parsed into benchmark-specific structures such as boxes, points, recognized text, keypoints, and camera parameters, while image outputs are decoded into masks, depth maps, normal maps, or 3D point maps.
 
 ### Structured Visual Understanding
 
-| Task | Benchmark | Output | SenseNova-Vision |
-|---|---:|---|---:|
-| Object detection | COCO-Com. | bbox mAP | **56.6** |
-| Referring localization | HR / RefCOCOg V / T | bbox | **80.2 / 79.6 / 80.5** |
-| Long-tail detection | LVIS | bbox mAP | **54.8** |
-| Dense detection | Dense200 | bbox mAP | **66.8** |
-| Tiny detection | VisDrone | bbox / point | **43.3 / 62.9** |
-| OCR localization | HierText | bbox | **31.2** |
-| OCR localization | ICDAR15 | bbox | **49.5** |
-| GUI grounding | ScreenSpot-V2 | bbox | 85.9 |
-| Keypoint localization | COCO-Keypoint | point | **34.6** |
+Structured visual understanding evaluates tasks whose outputs can be represented as structured textual predictions, including box- and point-based localization, referring detection, OCR localization, GUI grounding, and keypoint localization.
+
+<table>
+  <thead>
+    <tr>
+      <th align="center" rowspan="3">Method</th>
+      <th align="center" colspan="6">Object Detection</th>
+      <th align="center" colspan="2">OCR</th>
+      <th align="center">GUI</th>
+      <th align="center">Keypoint</th>
+    </tr>
+    <tr>
+      <th align="center">COCO-Com.</th>
+      <th align="center">HR/RefCOCOg V/T</th>
+      <th align="center">LVIS</th>
+      <th align="center">Dense200</th>
+      <th align="center" colspan="2">VisDrone</th>
+      <th align="center">HierText</th>
+      <th align="center">ICDAR15</th>
+      <th align="center">ScreenSpot-V2</th>
+      <th align="center">COCO-Kpt.</th>
+    </tr>
+    <tr>
+      <th align="center">bbox</th>
+      <th align="center">bbox</th>
+      <th align="center">bbox</th>
+      <th align="center">bbox</th>
+      <th align="center">bbox</th>
+      <th align="center">point</th>
+      <th align="center">bbox</th>
+      <th align="center">bbox</th>
+      <th align="center">bbox</th>
+      <th align="center">point</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Grounding DINO-Swin-T</td>
+      <td><strong>56.6</strong></td>
+      <td>25.2 / 45.9 / 46.8</td>
+      <td>38.8</td>
+      <td>33.1</td>
+      <td><u>38.5</u></td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <td>Bagel</td>
+      <td>50.2</td>
+      <td>74.6 / 76.4 / <u>77.8</u></td>
+      <td>46.8</td>
+      <td>42.4</td>
+      <td>23.0</td>
+      <td>36.9</td>
+      <td>7.1</td>
+      <td>15.8</td>
+      <td>81.1</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <td>Qwen3-VL-8B-Instruct</td>
+      <td>46.6</td>
+      <td>70.4 / 72.3 / 72.6</td>
+      <td>43.2</td>
+      <td>13.5</td>
+      <td>28.7</td>
+      <td>35.7</td>
+      <td>22.4</td>
+      <td>25.4</td>
+      <td><u>90.5</u></td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <td>Qwen3.5-9B</td>
+      <td>49.3</td>
+      <td>71.7 / 72.1 / 72.6</td>
+      <td>43.2</td>
+      <td>27.5</td>
+      <td>26.8</td>
+      <td>41.7</td>
+      <td>19.6</td>
+      <td>11.4</td>
+      <td><strong>92.2</strong></td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <td>LocateAnything</td>
+      <td><u>54.7</u></td>
+      <td>78.7 / <u>76.7</u> / 77.6</td>
+      <td><u>50.7</u></td>
+      <td><u>58.7</u></td>
+      <td><u>39.9</u></td>
+      <td><u>60.4</u></td>
+      <td><u>29.1</u></td>
+      <td>26.4</td>
+      <td>85.5</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <td>Rex-Omni</td>
+      <td>52.9</td>
+      <td><u>79.9</u> / 73.6 / 74.3</td>
+      <td>46.9</td>
+      <td>58.3</td>
+      <td>35.8</td>
+      <td>58.9</td>
+      <td>28.0</td>
+      <td><u>28.1</u></td>
+      <td>88.4</td>
+      <td><u>32.6</u></td>
+    </tr>
+    <tr>
+      <td>SenseNova-Vision</td>
+      <td><strong>56.6</strong></td>
+      <td><strong>80.2</strong> / <strong>79.6</strong> / <strong>80.5</strong></td>
+      <td><strong>54.8</strong></td>
+      <td><strong>66.8</strong></td>
+      <td><strong>43.3</strong></td>
+      <td><strong>62.9</strong></td>
+      <td><strong>31.2</strong></td>
+      <td><strong>49.5</strong></td>
+      <td>85.9</td>
+      <td><strong>34.6</strong></td>
+    </tr>
+  </tbody>
+</table>
 
 ### Dense Geometric Prediction
 
-| Task | Benchmark | Metric | SenseNova-Vision |
-|---|---:|---|---:|
-| Depth | NYUv2 | AbsRel↓ / δ1↑ | **4.0 / 98.1** |
-| Depth | KITTI | AbsRel↓ / δ1↑ | **5.9 / 95.9** |
-| Depth | ETH3D | AbsRel↓ / δ1↑ | 4.3 / 97.4 |
-| Depth | ScanNet | AbsRel↓ / δ1↑ | **3.9 / 98.0** |
-| Depth | DIODE | AbsRel↓ / δ1↑ | **20.6 / 76.4** |
-| Surface normal | ScanNet | Mean↓ / 11.25°↑ | **12.8 / 68.9** |
-| Surface normal | iBims-1 | Mean↓ / 11.25°↑ | 15.4 / 69.1 |
-| Surface normal | NYUv2 | Mean↓ / 11.25°↑ | **14.4 / 62.7** |
+Dense geometric prediction evaluates pixel-aligned geometric outputs, including monocular depth estimation and surface normal estimation.
+
+<table>
+  <thead>
+    <tr>
+      <th align="center" rowspan="3">Method</th>
+      <th align="center" colspan="5">Depth</th>
+      <th align="center" colspan="3">Normal</th>
+    </tr>
+    <tr>
+      <th align="center">NYUv2</th>
+      <th align="center">KITTI</th>
+      <th align="center">ETH3D</th>
+      <th align="center">ScanNet</th>
+      <th align="center">DIODE</th>
+      <th align="center">ScanNet</th>
+      <th align="center">iBims-1</th>
+      <th align="center">NYUv2</th>
+    </tr>
+    <tr>
+      <th align="center" colspan="5">AbsRel↓ / δ1↑</th>
+      <th align="center" colspan="3">Mean↓ / 11.25°↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DSINE</td>
+      <td>--</td><td>--</td><td>--</td><td>--</td><td>--</td>
+      <td>16.2 / 61.0</td><td>17.1 / 67.4</td><td>16.4 / 59.6</td>
+    </tr>
+    <tr>
+      <td>DepthAnything</td>
+      <td>4.3 / <strong>98.1</strong></td><td>7.6 / 94.7</td><td>12.7 / 88.2</td><td>4.3 / 98.1</td><td>26.0 / 75.9</td>
+      <td>--</td><td>--</td><td>--</td>
+    </tr>
+    <tr>
+      <td>DepthAnything V2</td>
+      <td>4.5 / 97.9</td><td>7.4 / 94.6</td><td>13.1 / 86.5</td><td>4.2 / 97.8</td><td>26.5 / 73.4</td>
+      <td>--</td><td>--</td><td>--</td>
+    </tr>
+    <tr>
+      <td>*MoGe-2</td>
+      <td><strong>3.5</strong> / 98.0</td><td><strong>5.5</strong> / <strong>97.7</strong></td><td><strong>3.4</strong> / <strong>98.8</strong></td><td><strong>3.4</strong> / <strong>98.3</strong></td><td><strong>23.0</strong> / <strong>82.3</strong></td>
+      <td><strong>12.8</strong> / <strong>68.4</strong></td><td><strong>14.7</strong> / <strong>70.4</strong></td><td><strong>14.7</strong> / <strong>62.3</strong></td>
+    </tr>
+    <tr>
+      <td>Marigold</td>
+      <td>5.5 / 96.4</td><td>9.9 / 91.6</td><td>6.5 / 95.9</td><td>6.4 / 95.2</td><td>30.8 / <u>77.3</u></td>
+      <td>21.3 / 45.6</td><td>18.5 / 64.7</td><td>20.9 / 50.5</td>
+    </tr>
+    <tr>
+      <td>DICEPTION</td>
+      <td>6.1 / 96.0</td><td>6.9 / 94.9</td><td>5.0 / 97.5</td><td>7.2 / 94.4</td><td>28.9 / 72.2</td>
+      <td>18.8 / 53.6</td><td>--</td><td>18.3 / 52.9</td>
+    </tr>
+    <tr>
+      <td>FE2E</td>
+      <td><u>4.1</u> / <u>97.7</u></td><td><u>6.6</u> / <strong>96.0</strong></td><td><strong>3.8</strong> / <strong>98.7</strong></td><td>4.4 / 97.5</td><td>22.8 / <strong>81.2</strong></td>
+      <td><u>13.8</u> / <u>67.2</u></td><td><strong>15.1</strong> / <strong>70.6</strong></td><td><u>16.2</u> / <u>59.6</u></td>
+    </tr>
+    <tr>
+      <td>Lotus-2</td>
+      <td><u>4.1</u> / 97.6</td><td>6.7 / 94.5</td><td>4.6 / <u>98.1</u></td><td><u>4.2</u> / <u>97.6</u></td><td><u>22.1</u> / 75.2</td>
+      <td>14.2 / 66.8</td><td><u>15.4</u> / <u>70.4</u></td><td>16.9 / 59.0</td>
+    </tr>
+    <tr>
+      <td>SenseNova-Vision</td>
+      <td><strong>4.0</strong> / <strong>98.1</strong></td><td><strong>5.9</strong> / <u>95.9</u></td><td><u>4.3</u> / 97.4</td><td><strong>3.9</strong> / <strong>98.0</strong></td><td><strong>20.6</strong> / 76.4</td>
+      <td><strong>12.8</strong> / <strong>68.9</strong></td><td><u>15.4</u> / 69.1</td><td><strong>14.4</strong> / <strong>62.7</strong></td>
+    </tr>
+  </tbody>
+</table>
 
 ### Segmentation
 
-| Task | Benchmark | Metric | SenseNova-Vision |
-|---|---:|---|---:|
-| Generic segmentation | COCO Panoptic / Semantic | Pan. / Sem. | 48.8 / 64.0 |
-| Referring segmentation | RefCOCO / RefCOCO+ / RefCOCOg | cIoU | 81.3 / 76.0 / 80.3 |
-| Reasoning segmentation | ReasonSeg Val / Test | gIoU | **63.2 / 60.7** |
-| GCG segmentation | Val / Test | gIoU | 65.7 / 66.2 |
-| Interactive segmentation | Point / Box | mIoU | 60.9 / **73.9** |
+Segmentation evaluates mask prediction under semantic, referring, reasoning, grounded, and interactive guidance.
+
+<table>
+  <thead>
+    <tr>
+      <th align="center" rowspan="2">Method</th>
+      <th align="center">Gen. Seg.</th>
+      <th align="center">Ref. Seg.</th>
+      <th align="center">Rea. Seg.</th>
+      <th align="center">GCG Seg.</th>
+      <th align="center">Inter. Seg.</th>
+    </tr>
+    <tr>
+      <th align="center">Pan. / Sem.</th>
+      <th align="center">RefCOCO / + / g</th>
+      <th align="center">Val / Test</th>
+      <th align="center">Val / Test</th>
+      <th align="center">Point / Box</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>LISA-7B</td><td>--</td><td>74.9 / 65.1 / 67.9</td><td>52.9 / 47.3</td><td>62.0 / 61.7</td><td>--</td></tr>
+    <tr><td>PSALM</td><td><strong>55.9</strong> / <strong>66.6</strong></td><td>83.6 / 72.9 / 73.8</td><td>--</td><td>--</td><td><u>64.3</u> / 67.3</td></tr>
+    <tr><td>Text4Seg</td><td>--</td><td>79.2 / 72.8 / 74.0</td><td>59.1 / 57.1</td><td>--</td><td>--</td></tr>
+    <tr><td>LENS</td><td>--</td><td><u>84.2</u> / <strong>79.4</strong> / <u>81.2</u></td><td><u>62.1</u> / 57.2</td><td>--</td><td>--</td></tr>
+    <tr><td>ConverSeg</td><td>--</td><td>79.4 / 74.3 / 74.9</td><td>61.9 / 57.0</td><td>--</td><td>--</td></tr>
+    <tr><td>X-SAM</td><td><u>54.7</u> / <u>66.5</u></td><td><strong>85.1</strong> / <u>78.0</u> / <strong>83.8</strong></td><td>56.6 / <u>57.8</u></td><td><strong>69.4</strong> / <strong>69.0</strong></td><td><strong>65.4</strong> / <u>70.0</u></td></tr>
+    <tr><td>SenseNova-Vision</td><td>48.8 / 64.0</td><td>81.3 / 76.0 / 80.3</td><td><strong>63.2</strong> / <strong>60.7</strong></td><td><u>65.7</u> / <u>66.2</u></td><td>60.9 / <strong>73.9</strong></td></tr>
+  </tbody>
+</table>
 
 ### Multi-View Visual Geometry
 
-| Task | Benchmark | Metric | SenseNova-Vision |
-|---|---:|---|---:|
-| Multi-view reconstruction | 7Scenes | Acc.↓ / Comp.↓ / F1↑ | 0.028 / **0.026** / **87.9** |
-| Multi-view reconstruction | ETH3D | Acc.↓ / Comp.↓ / F1↑ | **0.301 / 0.175 / 72.2** |
-| Camera pose | Re10K | RRA@30↑ / RTA@30↑ / AUC@30↑ | 99.8 / **94.2** / 77.3 |
-| Camera pose | CO3Dv2 | RRA@30↑ / RTA@30↑ / AUC@30↑ | **97.4 / 95.4 / 80.1** |
+Multi-view visual geometry evaluates geometric prediction from multiple input images, including multi-view point map reconstruction and camera pose estimation.
+
+<table>
+  <thead>
+    <tr>
+      <th align="center" rowspan="3">Method</th>
+      <th align="center" colspan="2">Multi-View Reconstruction</th>
+      <th align="center" colspan="2">Camera Pose</th>
+    </tr>
+    <tr>
+      <th align="center" colspan="2">Acc.↓ / Comp.↓ / F1↑</th>
+      <th align="center" colspan="2">RRA@30↑ / RTA@30↑ / AUC@30↑</th>
+    </tr>
+    <tr>
+      <th align="center">7Scenes</th>
+      <th align="center">ETH3D</th>
+      <th align="center">Re10K</th>
+      <th align="center">CO3Dv2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>DUSt3R</td><td>0.026 / 0.034 / 87.1</td><td>0.359 / 0.531 / 66.6</td><td>99.8 / 84.9 / 67.6</td><td>97.7 / 93.4 / 78.3</td></tr>
+    <tr><td>DepthAnything3</td><td><strong>0.020</strong> / <strong>0.026</strong> / <strong>90.5</strong></td><td>0.228 / 0.212 / 76.6</td><td><strong>100.0</strong> / <strong>96.4</strong> / <strong>89.6</strong></td><td><strong>99.3</strong> / <strong>98.0</strong> / <strong>91.8</strong></td></tr>
+    <tr><td>VGGT</td><td>0.023 / 0.032 / 88.4</td><td><strong>0.177</strong> / <strong>0.155</strong> / <strong>80.9</strong></td><td><strong>100.0</strong> / 93.5 / 79.3</td><td>98.3 / 96.6 / 89.2</td></tr>
+    <tr><td>MoRe</td><td>0.038 / 0.039 / 77.1</td><td>0.348 / 0.318 / 62.7</td><td><strong>100.0</strong> / 94.0 / 79.1</td><td>98.4 / 96.3 / 83.0</td></tr>
+    <tr><td>MapAnything</td><td><strong>0.027</strong> / 0.029 / 87.8</td><td>0.400 / 0.524 / 67.0</td><td><strong>100.0</strong> / 93.5 / <strong>80.7</strong></td><td>95.5 / 91.6 / 70.9</td></tr>
+    <tr><td>G2VLM</td><td>0.084 / 0.056 / 59.2</td><td>0.784 / 0.553 / 36.7</td><td>99.8 / 77.5 / 51.8</td><td>96.3 / 92.0 / 55.2</td></tr>
+    <tr><td>SenseNova-Vision</td><td>0.028 / <strong>0.026</strong> / <strong>87.9</strong></td><td><strong>0.301</strong> / <strong>0.175</strong> / <strong>72.2</strong></td><td>99.8 / <strong>94.2</strong> / 77.3</td><td><strong>97.4</strong> / <strong>95.4</strong> / <strong>80.1</strong></td></tr>
+  </tbody>
+</table>
+
+### Comparison with Generalist Vision Models
+
+We further compare SenseNova-Vision with recent generalist visual models that span multiple visual capabilities.
+
+<table>
+  <thead>
+    <tr><th align="center" rowspan="3">Method</th><th align="center">Detection</th><th align="center">Sem. Seg.</th><th align="center">Ref. Seg.</th><th align="center">Depth</th></tr>
+    <tr><th align="center">mAP</th><th align="center">mIoU</th><th align="center">cIoU</th><th align="center">δ1</th></tr>
+    <tr><th align="center">COCO</th><th align="center">Cityscapes</th><th align="center">RefCOCO / + / g</th><th align="center">NYUv2</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Youtu-VL</td><td>47.1</td><td>70.4</td><td>80.7 / <strong>76.2</strong> / 76.5</td><td>90.4</td></tr>
+    <tr><td>SenseNova-Vision</td><td><strong>53.7</strong></td><td><strong>71.2</strong></td><td><strong>81.3</strong> / 76.0 / <strong>80.3</strong></td><td><strong>98.1</strong></td></tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr><th align="center" rowspan="3">Method</th><th align="center">Sem. Seg.</th><th align="center">Ref. Seg.</th><th align="center">Rea. Seg.</th><th align="center" colspan="4">Depth</th><th align="center" colspan="3">Normal</th></tr>
+    <tr><th align="center">mIoU</th><th align="center">cIoU</th><th align="center">gIoU</th><th align="center" colspan="4">δ1</th><th align="center" colspan="3">Mean Error↓</th></tr>
+    <tr><th align="center">Cityscapes</th><th align="center">RefCOCOg</th><th align="center">ReasonSeg</th><th align="center">KITTI</th><th align="center">NYUv2</th><th align="center">DIODE</th><th align="center">ETH3D</th><th align="center">NYUv2</th><th align="center">ScanNet</th><th align="center">DIODE</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Vision Banana</td><td>69.9</td><td>73.8</td><td>79.3</td><td>91.5</td><td>94.8</td><td>91.7</td><td>93.5</td><td>17.8</td><td>15.1</td><td><strong>13.8</strong></td></tr>
+    <tr><td>SenseNova-Vision</td><td><strong>71.2</strong></td><td><strong>80.3</strong></td><td>63.2</td><td>95.9</td><td>98.1</td><td>76.4</td><td>97.4</td><td><strong>14.4</strong></td><td><strong>12.8</strong></td><td>15.3</td></tr>
+  </tbody>
+</table>
 
 ### General Multimodal Capability
 
-| Model | MMMU | MMVP | MathVista | GenEval | WISE |
-|---|---:|---:|---:|---:|---:|
-| Bagel | 0.55 | 69.3 | 73.1 | 0.82 | 0.52 |
-| SenseNova-Vision | 0.42 | 79.0 | 67.7 | 0.85 | 0.45 |
+SenseNova-Vision largely maintains general multimodal capability while being adapted to visual perception tasks.
+
+<table>
+  <thead>
+    <tr><th align="center" rowspan="2">Method</th><th align="center" colspan="3">Understanding</th><th align="center" colspan="2">Generation</th></tr>
+    <tr><th align="center">MMMU</th><th align="center">MMVP</th><th align="center">MathVista</th><th align="center">GenEval</th><th align="center">WISE</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Bagel</td><td>0.55</td><td>69.3</td><td>73.1</td><td>0.82</td><td>0.52</td></tr>
+    <tr><td>SenseNova-Vision</td><td>0.42</td><td>79.0</td><td>67.7</td><td>0.85</td><td>0.45</td></tr>
+  </tbody>
+</table>
 
 ## Qualitative Examples
 

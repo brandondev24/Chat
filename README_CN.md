@@ -78,7 +78,7 @@ The model requires the SenseNova-Vision inference code and task-specific post-pr
 ```python
 from huggingface_hub import snapshot_download
 
-model_path = snapshot_download("sensenovaSenseNova-Vision-7B-MoT")
+model_path = snapshot_download("sensenova/SenseNova-Vision-7B-MoT")
 print(model_path)
 ```
 

@@ -127,7 +127,8 @@ For more details, supported tasks, and additional examples, please refer to the 
 ```text
 https://github.com/OpenSenseNova/SenseNova-Vision
 ```
-### 🏗️ Key Contributions
+
+## 🏗️ Key Contributions
 
 - 🔗 We introduce a unified multimodal generation formulation that casts heterogeneous computer vision tasks into the native input-output spaces of UMMs.
 - 🧩 We construct the SenseNova-Vision Corpus, a large-scale computer-vision instruction-response corpus with decodable text, image, and mixed text-image targets.

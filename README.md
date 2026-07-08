@@ -504,7 +504,7 @@ If you find SenseNova-Vision useful, please cite the technical report:
 ```
 
 ## 📜 License
-- **Model weights**: CC BY-NC 4.0. The model weights are for non-commercial use only.
+**Model weights**: CC BY-NC 4.0. The model weights are for non-commercial use only.
 
 ## 📮 Contact
 

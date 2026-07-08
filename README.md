@@ -457,8 +457,7 @@ If you find SenseNova-Vision useful, please cite the technical report:
 ```
 
 ## 📜 License
-
-License information for the SenseNova-Vision pre-release will be updated before the public release. Please also follow the licenses of the underlying models, datasets, and third-party evaluation tools used by this model.
+- **Model weights**: CC BY-NC 4.0. The model weights are for non-commercial use only.
 
 ## 📮 Contact
 

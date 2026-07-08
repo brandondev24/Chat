@@ -2,8 +2,6 @@
 license: cc-by-nc-4.0
 language:
 - en
-pipeline_tag: image-text-to-text
-library_name: transformers
 inference: false
 tags:
 - multimodal
@@ -16,6 +14,7 @@ tags:
 - dense-perception
 - unified-multimodal-generation
 ---
+
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC--BY--NC%204.0-lightgrey.svg)](./LICENSE)
 
@@ -504,7 +503,10 @@ If you find SenseNova-Vision useful, please cite the technical report:
 ```
 
 ## 📜 License
-**Model weights**: CC BY-NC 4.0. The model weights are for non-commercial use only.
+
+The model weights are released under the CC BY-NC 4.0 license and are intended for non-commercial use only.
+
+The source code in the official GitHub repository may follow a different license. Please refer to the repository license for code usage. Third-party datasets, tools, and assets are subject to their original licenses.
 
 ## 📮 Contact
 

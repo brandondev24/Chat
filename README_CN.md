@@ -416,11 +416,14 @@ SenseNova-Vision 可能输出错误的目标定位、分割掩码、深度、表
 ## ✒️ 引用
 如果本项目对你的研究有帮助，请引用以下技术报告：
 ```bibtex
-@misc{sensenova_vision_2026,
-  title  = {SenseNova-Vision: Rethinking Computer Vision as Unified Multimodal Generation},
-  author = {{SenseTime Research Team}},
-  year   = {2026},
-  note   = {Technical report}
+@misc{han2026visionunifiedmultimodalgeneration,
+      title={Vision as Unified Multimodal Generation}, 
+      author={Xiaoyang Han and Jianhua Li and Kewang Deng and Zukai Chen and Xuanke Shi and Sihan Wang and Boxuan Li and Linyan Wang and Siyi Xie and Xin You and Jinsheng Quan and Zhongang Cai and Haiwen Diao and Ziwei Liu and Lei Yang and Dahua Lin and Quan Wang},
+      year={2026},
+      eprint={2607.06560},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2607.06560}, 
 }
 ```
 

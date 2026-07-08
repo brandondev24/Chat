@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/static/v1?label=🤗 HuggingFace&message=数据集&color=yellow">
   </a>
   <a href="./LICENSE">
-    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="开源协议">
+    <img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg" alt="License: CC BY-NC 4.0">
   </a>
 </p>
 

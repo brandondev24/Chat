@@ -67,12 +67,27 @@ This formulation allows a single model to cover structured visual understanding,
 - **Broad task coverage:** The same model handles structured visual understanding, segmentation, dense geometry, and multi-view visual geometry.
 - **Instruction-defined task variants:** Natural-language instructions enable flexible task definitions beyond fixed benchmark schemas.
 
-
 ## 🛠️ How to Use
 
-The model requires the SenseNova-Vision inference code and task-specific post-processing scripts. The examples below assume that you have installed the project code and downloaded this model repository from Hugging Face.
+Please use the official inference code from the SenseNova-Vision GitHub repository:
+
+```bash
+git clone https://github.com/OpenSenseNova/SenseNova-Vision.git
+cd SenseNova-Vision
+```
+
+### Environment Setup
+
+Create the environment from the repository root:
+
+```bash
+bash setup.sh sensenova-vision
+conda activate sensenova-vision
+```
 
 ### Download the Model
+
+You can download the model weights from Hugging Face with `huggingface_hub`:
 
 ```python
 from huggingface_hub import snapshot_download
@@ -81,6 +96,38 @@ model_path = snapshot_download("sensenova/SenseNova-Vision-7B-MoT")
 print(model_path)
 ```
 
+The printed `model_path` points to the local checkpoint directory and can be used as the model path for inference.
+
+### Run the Curated Example
+
+We provide a curated example to quickly verify the environment and model setup:
+
+```bash
+bash scripts/run_sensenova_vision.sh example
+```
+
+### Run One Inference Request
+
+You can also run a single inference request with the official wrapper.  
+For example, the following command performs binary segmentation for the target category `"person"`:
+
+```bash
+bash scripts/run_sensenova_vision.sh inference \
+  binary_seg \
+  "person" \
+  examples/images/2.jpg
+```
+
+### Launch the Web Demo
+
+You can launch the Gradio web demo using the official wrapper provided in the repository.  
+The wrapper will print the local URL before starting Gradio. Open the printed URL in your browser to interact with the model.
+
+For more details, supported tasks, and additional examples, please refer to the official GitHub repository:
+
+```text
+https://github.com/OpenSenseNova/SenseNova-Vision
+```
 ### 🏗️ Key Contributions
 
 - 🔗 We introduce a unified multimodal generation formulation that casts heterogeneous computer vision tasks into the native input-output spaces of UMMs.

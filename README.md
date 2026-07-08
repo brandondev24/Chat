@@ -2,22 +2,22 @@
 license: cc-by-nc-4.0
 language:
 - en
+pipeline_tag: image-text-to-text
+library_name: transformers
+inference: false
 tags:
 - multimodal
 - vision-language
-- unified-multimodal-generation
-- computer-vision
-- object-detection
+- image-generation
+- image-editing
 - segmentation
 - depth-estimation
-- surface-normal-estimation
-- 3d-reconstruction
-- camera-pose-estimation
-- ocr
-- gui-grounding
-pipeline_tag: image-to-text
-inference: false
+- normal-estimation
+- dense-perception
+- unified-multimodal-generation
 ---
+
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC--BY--NC%204.0-lightgrey.svg)](./LICENSE)
 
 # Vision as Unified Multimodal Generation
 

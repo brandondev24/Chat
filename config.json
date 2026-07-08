@@ -1,5 +1,20 @@
 {
-  "name": [
-    "SenseNova-Vision-7B-MoT"
-  ]
+  "model_name": "SenseNova-Vision-7B-MoT",
+  "base_model": "BAGEL-7B-MoT",
+  "model_family": "unified_multimodal_generation",
+  "parameter_size": "7B",
+  "modality": ["text", "image"],
+  "capabilities": [
+    "visual understanding",
+    "image generation",
+    "image editing",
+    "dense perception",
+    "segmentation",
+    "depth estimation",
+    "normal estimation",
+    "multi-view geometry"
+  ],
+  "load_with_transformers_automodel": false,
+  "official_inference_code": "https://github.com/OpenSenseNova/SenseNova-Vision",
+  "note": "This file is provided for project-level metadata only. The model cannot be loaded directly with transformers.AutoModel.from_pretrained."
 }

@@ -427,7 +427,6 @@ The corpus covers four task families:
 | Segmentation | Referring, reasoning, interactive, generic, and grounded-conversation segmentation | Binary masks, color-coded masks, or mixed text-image responses |
 | Multi-view visual geometry | Point-map reconstruction and camera-pose estimation | Image-like point maps and structured camera records |
 
-Public annotations are converted directly when possible. Generated or curated targets are used to supplement incomplete supervision and improve diversity. A dedicated data document should provide the source lists, prompt templates, conversion rules, and corpus construction details.
 
 ## ⚠️ Limitations
 

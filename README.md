@@ -26,6 +26,7 @@ tags:
   <a href="https://arxiv.org/abs/2607.06560"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2607.06560-b31b1b.svg"></a>
   <a href="https://huggingface.co/sensenova/SenseNova-Vision-7B-MoT"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20Hugging%20Face&message=Model&color=green"></a>
   <a href="https://huggingface.co/datasets/sensenova/SenseNova-Vision-Corpus-50M"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20Hugging%20Face&message=Dataset&color=yellow"></a>
+  <a href="https://modelscope.cn/models/SenseNova/SenseNova-Vision-7B-MoT" target="_blank"><img src="https://img.shields.io/badge/🤖%20ModelScope-Model-blue" alt="ModelScope Model"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg" alt="License: CC BY-NC 4.0"></a>
 </p>
 

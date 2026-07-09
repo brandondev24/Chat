@@ -17,6 +17,9 @@
   <a href="https://huggingface.co/datasets/sensenova/SenseNova-Vision-Corpus-50M">
     <img src="https://img.shields.io/static/v1?label=🤗 HuggingFace&message=数据集&color=yellow">
   </a>
+  <a href="https://modelscope.cn/models/SenseNova/SenseNova-Vision-7B-MoT" target="_blank">
+    <img src="https://img.shields.io/badge/🤖%20ModelScope-Model-blue" alt="ModelScope Model">
+  </a>
   <a href="./LICENSE">
     <img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg" alt="License: CC BY-NC 4.0">
   </a>

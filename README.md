@@ -1,8 +1,8 @@
 ---
-license: cc-by-nc-4.0
 language:
 - en
-inference: false
+license: cc-by-nc-4.0
+pipeline_tag: any-to-any
 tags:
 - multimodal
 - vision-language
@@ -13,6 +13,7 @@ tags:
 - normal-estimation
 - dense-perception
 - unified-multimodal-generation
+inference: false
 ---
 
 # Vision as Unified Multimodal Generation

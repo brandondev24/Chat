@@ -28,7 +28,7 @@ inference: false
   <a href="https://huggingface.co/sensenova/SenseNova-Vision-7B-MoT"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20Hugging%20Face&message=Model&color=green"></a>
   <a href="https://huggingface.co/datasets/sensenova/SenseNova-Vision-Corpus-50M"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20Hugging%20Face&message=Dataset&color=yellow"></a>
   <a href="https://modelscope.cn/models/SenseNova/SenseNova-Vision-7B-MoT" target="_blank"><img src="https://img.shields.io/badge/🤖%20ModelScope-Model-blue" alt="ModelScope Model"></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg" alt="License: CC BY-NC 4.0"></a>
+  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank"><img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg" alt="License"></a>
 </p>
 
 <p align="center">

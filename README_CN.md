@@ -20,8 +20,8 @@
   <a href="https://modelscope.cn/models/SenseNova/SenseNova-Vision-7B-MoT" target="_blank">
     <img src="https://img.shields.io/badge/🤖%20ModelScope-Model-blue" alt="ModelScope Model">
   </a>
-  <a href="./LICENSE">
-    <img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg" alt="License: CC BY-NC 4.0">
+  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">
+    <img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg" alt="License">
   </a>
 </p>
 

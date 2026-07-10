@@ -465,7 +465,7 @@ SenseNova-Vision is trained on the **SenseNova-Vision-Corpus-50M**, a large-scal
 The corpus covers four task families:
 
 | Task family | Representative tasks | Target representation |
-|---|---|---|\
+|---|---|---|
 | Structured visual understanding | Detection, referring localization, pointing, keypoints, OCR, layout, GUI grounding | Text records with normalized coordinates and lightweight structure markers |
 | Dense geometric prediction | Monocular depth estimation and surface-normal prediction | Deterministically encoded image targets |
 | Segmentation | Referring, reasoning, interactive, generic, and grounded-conversation segmentation | Binary masks, color-coded masks, or mixed text-image responses |
